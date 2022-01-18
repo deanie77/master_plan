@@ -15,9 +15,6 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
 
   void addPlan() {
     final text = textController.text;
-    if (text.isEmpty) {
-      return;
-    }
 
     final controller = PlanProvider.of(context);
     controller.addNewPlan(text);
@@ -92,9 +89,7 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
           onDismissed: (_) {
             final controller = PlanProvider.of(context);
             controller.deletePlan(plan);
-            setState(() {
-              
-            });
+            setState(() {});
           },
           child: ListTile(
             title: Text(plan.name),
