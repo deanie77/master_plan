@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:master_plan/models/plan.dart';
+import 'package:master_plan/controllers/plan_controller.dart';
 
 class PlanProvider extends InheritedWidget {
-  final _plans = <Plan>[];
-
+  final _controller = PlanController();
+  
   PlanProvider({Key? key, required Widget child})
       : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => false;
 
-  static List<Plan> of(BuildContext context) {
-    final provider = context.dependOnInheritedWidgetOfExactType<PlanProvider>();
-    return provider!._plans;
+  static PlanController of(BuildContext context) {
+    PlanProvider? provider =
+        context.dependOnInheritedWidgetOfExactType<PlanProvider>();
+    return provider!._controller;
   }
 }
